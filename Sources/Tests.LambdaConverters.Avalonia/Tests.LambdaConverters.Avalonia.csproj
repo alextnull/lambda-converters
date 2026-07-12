@@ -1,7 +1,7 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
 	<PropertyGroup>
-		<TargetFramework>net6.0</TargetFramework>
+		<TargetFramework>net10.0</TargetFramework>
 		<LangVersion>8.0</LangVersion>
 		<Nullable>enable</Nullable>
 		<IsPackable>false</IsPackable>
@@ -25,11 +25,11 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<PackageReference Include="JetBrains.Annotations" Version="11.0.0" />
 		<PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.1.0" />
 		<PackageReference Include="MSTest.TestAdapter" Version="2.2.8" />
 		<PackageReference Include="MSTest.TestFramework" Version="2.2.8" />
 		<PackageReference Include="coverlet.collector" Version="3.1.2" />
+		<PackageReference Include="Newtonsoft.Json" Version="13.0.4" />
 	</ItemGroup>
 
 </Project>

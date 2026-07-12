@@ -2,7 +2,6 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
 using System.Linq;
-using JetBrains.Annotations;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace Tests.Shared
@@ -10,7 +9,6 @@ namespace Tests.Shared
     [ExcludeFromCodeCoverage]
     internal static class SequenceAssert
     {
-        [Pure]
         static bool AreEqual<T>(IEnumerable<T>? expected, IEnumerable<T>? actual, Func<T, T, bool>? equalityComparer, out string reason)
         {
             if (ReferenceEquals(expected, actual))

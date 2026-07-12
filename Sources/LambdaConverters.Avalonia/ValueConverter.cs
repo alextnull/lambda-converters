@@ -2,7 +2,6 @@
 using System.Diagnostics;
 using System.Globalization;
 using Avalonia.Data.Converters;
-using JetBrains.Annotations;
 
 namespace LambdaConverters
 {
@@ -248,7 +247,6 @@ namespace LambdaConverters
         /// <exception cref="ArgumentOutOfRangeException">
         ///     <paramref name="errorStrategy"/> is not a valid <see cref="ConverterErrorStrategy"/> value.
         /// </exception>
-        [Pure]
         public static IValueConverter Create<I, O>(
             Func<ValueConverterArgs<I>, O>? convertFunction = null,
             Func<ValueConverterArgs<O>, I>? convertBackFunction = null,
@@ -281,7 +279,6 @@ namespace LambdaConverters
         /// <exception cref="ArgumentOutOfRangeException">
         ///     <paramref name="errorStrategy"/> is not a valid <see cref="ConverterErrorStrategy"/> value.
         /// </exception>
-        [Pure]
         public static IValueConverter Create<I, O, P>(
             Func<ValueConverterArgs<I, P>, O>? convertFunction = null,
             Func<ValueConverterArgs<O, P>, I>? convertBackFunction = null,

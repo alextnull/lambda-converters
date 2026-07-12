@@ -1,7 +1,6 @@
 ﻿using System;
 using Avalonia;
 using Avalonia.Data;
-using JetBrains.Annotations;
 
 namespace LambdaConverters
 {
@@ -38,8 +37,7 @@ namespace LambdaConverters
         internal bool IsConvertFunctionAvailable { get; }
 
         internal bool IsConvertBackFunctionAvailable { get; }
-
-        [Pure]
+        
         internal object? GetErrorValue(object? defaultValue)
             => ErrorStrategy switch
             {

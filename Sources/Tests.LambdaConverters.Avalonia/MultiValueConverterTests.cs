@@ -24,108 +24,108 @@ namespace Tests.LambdaConverters.Avalonia
                 "errorStrategy");
 
             // with ConverterErrorStrategy.ReturnDefaultValue (default)
-            Assert.AreEqual(null, MultiValueConverter.Create<int, string>().Convert(null, null, null, null));
-            Assert.AreEqual(null, MultiValueConverter.Create<int, string>().Convert(ArrayUtils.GetEmpty<object>(), null, null, null));
-            Assert.AreEqual(null, MultiValueConverter.Create<int, string>().Convert(new object[] { 1, 2 }, null, null, null));
-            Assert.AreEqual(0, MultiValueConverter.Create<int, int>().Convert(null, null, null, null));
-            Assert.AreEqual(0, MultiValueConverter.Create<int, int>().Convert(ArrayUtils.GetEmpty<object>(), null, null, null));
-            Assert.AreEqual(0, MultiValueConverter.Create<int, int>().Convert(new object[] { 1, 2 }, null, null, null));
-            Assert.AreEqual(false, MultiValueConverter.Create<int, bool>().Convert(null, null, null, null));
-            Assert.AreEqual(false, MultiValueConverter.Create<int, bool>().Convert(ArrayUtils.GetEmpty<object>(), null, null, null));
-            Assert.AreEqual(false, MultiValueConverter.Create<int, bool>().Convert(new object[] { 1, 2 }, null, null, null));
+            Assert.AreEqual(null, MultiValueConverter.Create<int, string>().Convert(null!, null!, null, null!));
+            Assert.AreEqual(null, MultiValueConverter.Create<int, string>().Convert(ArrayUtils.GetEmpty<object>(), null!, null, null!));
+            Assert.AreEqual(null, MultiValueConverter.Create<int, string>().Convert(new object[] { 1, 2 }, null!, null, null!));
+            Assert.AreEqual(0, MultiValueConverter.Create<int, int>().Convert(null!, null!, null, null!));
+            Assert.AreEqual(0, MultiValueConverter.Create<int, int>().Convert(ArrayUtils.GetEmpty<object>(), null!, null, null!));
+            Assert.AreEqual(0, MultiValueConverter.Create<int, int>().Convert(new object[] { 1, 2 }, null!, null, null!));
+            Assert.AreEqual(false, MultiValueConverter.Create<int, bool>().Convert(null!, null!, null, null!));
+            Assert.AreEqual(false, MultiValueConverter.Create<int, bool>().Convert(ArrayUtils.GetEmpty<object>(), null!, null, null!));
+            Assert.AreEqual(false, MultiValueConverter.Create<int, bool>().Convert(new object[] { 1, 2 }, null!, null, null!));
 
-            Assert.IsNull(MultiValueConverter.Create<string, int>().ConvertBack(1, null, null, null));
+            Assert.IsNull(MultiValueConverter.Create<string, int>().ConvertBack(1, null!, null, null!));
             SequenceAssert.AreEqual(
                 ArrayUtils.GetEmpty<object>(),
-                MultiValueConverter.Create<string, int>().ConvertBack(1, ArrayUtils.GetEmpty<Type>(), null, null));
+                MultiValueConverter.Create<string, int>().ConvertBack(1, ArrayUtils.GetEmpty<Type>(), null, null!));
             SequenceAssert.AreEqual(
                 new object[2],
-                MultiValueConverter.Create<string, int>().ConvertBack(1, new[] { typeof(int), typeof(string) }, null, null));
-            Assert.IsNull(MultiValueConverter.Create<int, int>().ConvertBack(1, null, null, null));
+                MultiValueConverter.Create<string, int>().ConvertBack(1, new[] { typeof(int), typeof(string) }, null, null!));
+            Assert.IsNull(MultiValueConverter.Create<int, int>().ConvertBack(1, null!, null, null!));
             SequenceAssert.AreEqual(
                 ArrayUtils.GetEmpty<object>(),
-                MultiValueConverter.Create<int, int>().ConvertBack(1, ArrayUtils.GetEmpty<Type>(), null, null));
+                MultiValueConverter.Create<int, int>().ConvertBack(1, ArrayUtils.GetEmpty<Type>(), null, null!));
             SequenceAssert.AreEqual(
                 new object[] { 0, 0 },
-                MultiValueConverter.Create<int, int>().ConvertBack(1, new[] { typeof(int), typeof(string) }, null, null));
-            Assert.IsNull(MultiValueConverter.Create<bool, int>().ConvertBack(1, null, null, null));
+                MultiValueConverter.Create<int, int>().ConvertBack(1, new[] { typeof(int), typeof(string) }, null, null!));
+            Assert.IsNull(MultiValueConverter.Create<bool, int>().ConvertBack(1, null!, null, null!));
             SequenceAssert.AreEqual(
                 ArrayUtils.GetEmpty<object>(),
-                MultiValueConverter.Create<bool, int>().ConvertBack(1, ArrayUtils.GetEmpty<Type>(), null, null));
+                MultiValueConverter.Create<bool, int>().ConvertBack(1, ArrayUtils.GetEmpty<Type>(), null, null!));
             SequenceAssert.AreEqual(
                 new object[] { false, false },
-                MultiValueConverter.Create<bool, int>().ConvertBack(1, new[] { typeof(int), typeof(string) }, null, null));
+                MultiValueConverter.Create<bool, int>().ConvertBack(1, new[] { typeof(int), typeof(string) }, null, null!));
 
             // with ConverterErrorStrategy.UseFallbackOrDefaultValue
             Assert.AreEqual(
                 AvaloniaProperty.UnsetValue,
                 MultiValueConverter.Create<int, string>(errorStrategy: ConverterErrorStrategy.UseFallbackOrDefaultValue)
-                    .Convert(null, null, null, null));
+                    .Convert(null!, null!, null, null!));
             Assert.AreEqual(
                 AvaloniaProperty.UnsetValue,
                 MultiValueConverter.Create<int, string>(errorStrategy: ConverterErrorStrategy.UseFallbackOrDefaultValue)
-                    .Convert(ArrayUtils.GetEmpty<object>(), null, null, null));
+                    .Convert(ArrayUtils.GetEmpty<object>(), null!, null, null!));
             Assert.AreEqual(
                 AvaloniaProperty.UnsetValue,
                 MultiValueConverter.Create<int, string>(errorStrategy: ConverterErrorStrategy.UseFallbackOrDefaultValue)
-                    .Convert(new object[] { 1, 2 }, null, null, null));
+                    .Convert(new object[] { 1, 2 }, null!, null, null!));
 
             Assert.IsNull(
                 MultiValueConverter.Create<string, int>(errorStrategy: ConverterErrorStrategy.UseFallbackOrDefaultValue)
-                    .ConvertBack(1, null, null, null));
+                    .ConvertBack(1, null!, null, null!));
             SequenceAssert.AreEqual(
                 ArrayUtils.GetEmpty<object>(),
                 MultiValueConverter.Create<string, int>(errorStrategy: ConverterErrorStrategy.UseFallbackOrDefaultValue)
-                    .ConvertBack(1, ArrayUtils.GetEmpty<Type>(), null, null));
+                    .ConvertBack(1, ArrayUtils.GetEmpty<Type>(), null, null!));
             SequenceAssert.AreEqual(
                 new[] { AvaloniaProperty.UnsetValue, AvaloniaProperty.UnsetValue },
                 MultiValueConverter.Create<string, int>(errorStrategy: ConverterErrorStrategy.UseFallbackOrDefaultValue)
-                    .ConvertBack(1, new[] { typeof(int), typeof(string) }, null, null));
+                    .ConvertBack(1, new[] { typeof(int), typeof(string) }, null, null!));
 
             // with ConverterErrorStrategy.DoNothing
             Assert.AreEqual(
                  BindingOperations.DoNothing,
-                MultiValueConverter.Create<int, string>(errorStrategy: ConverterErrorStrategy.DoNothing).Convert(null, null, null, null));
+                MultiValueConverter.Create<int, string>(errorStrategy: ConverterErrorStrategy.DoNothing).Convert(null!, null!, null, null!));
             Assert.AreEqual(
                 BindingOperations.DoNothing,
                 MultiValueConverter.Create<int, string>(errorStrategy: ConverterErrorStrategy.DoNothing)
-                    .Convert(ArrayUtils.GetEmpty<object>(), null, null, null));
+                    .Convert(ArrayUtils.GetEmpty<object>(), null!, null, null!));
             Assert.AreEqual(
                 BindingOperations.DoNothing,
                 MultiValueConverter.Create<int, string>(errorStrategy: ConverterErrorStrategy.DoNothing)
-                    .Convert(new object[] { 1, 2 }, null, null, null));
+                    .Convert(new object[] { 1, 2 }, null!, null, null!));
 
-            Assert.IsNull(MultiValueConverter.Create<string, int>(errorStrategy: ConverterErrorStrategy.DoNothing).ConvertBack(1, null, null, null));
+            Assert.IsNull(MultiValueConverter.Create<string, int>(errorStrategy: ConverterErrorStrategy.DoNothing).ConvertBack(1, null!, null, null!));
             SequenceAssert.AreEqual(
                 ArrayUtils.GetEmpty<object>(),
                 MultiValueConverter.Create<string, int>(errorStrategy: ConverterErrorStrategy.DoNothing)
-                    .ConvertBack(1, ArrayUtils.GetEmpty<Type>(), null, null));
+                    .ConvertBack(1, ArrayUtils.GetEmpty<Type>(), null, null!));
             SequenceAssert.AreEqual(
                 new[] { BindingOperations.DoNothing, BindingOperations.DoNothing },
                 MultiValueConverter.Create<string, int>(errorStrategy: ConverterErrorStrategy.DoNothing)
-                    .ConvertBack(1, new[] { typeof(int), typeof(string) }, null, null));
+                    .ConvertBack(1, new[] { typeof(int), typeof(string) }, null, null!));
         }
 
         [TestMethod]
         public void WithConvertFunction()
         {
             // with a wrong target type (use default error strategy)
-            Assert.IsNull(MultiValueConverter.Create<int, string?>(e => null).Convert(new object[] { 1, 2 }, typeof(bool), null, null));
+            Assert.IsNull(MultiValueConverter.Create<int, string?>(e => null).Convert(new object[] { 1, 2 }, typeof(bool), null, null!));
 
             // without a target type
-            Assert.AreEqual("a", MultiValueConverter.Create<int, string>(e => "a").Convert(new object[] { 1, 2 }, null, null, null));
+            Assert.AreEqual("a", MultiValueConverter.Create<int, string>(e => "a").Convert(new object[] { 1, 2 }, null!, null, null!));
 
             // with an unexpected parameter (use default error strategy)
-            Assert.IsNull(MultiValueConverter.Create<int, string?>(e => null).Convert(new object[] { 1, 2 }, typeof(string), "p", null));
+            Assert.IsNull(MultiValueConverter.Create<int, string?>(e => null).Convert(new object[] { 1, 2 }, typeof(string), "p", null!));
 
             // with an input value of an unexpected type (use default error strategy)
-            Assert.IsNull(MultiValueConverter.Create<int, string?>(e => null).Convert(new object?[] { true, null }, typeof(string), null, null));
-            Assert.IsNull(MultiValueConverter.Create<int, string?>(e => null).Convert(new object?[] { null, true }, typeof(string), null, null));
-            Assert.IsNull(MultiValueConverter.Create<int, string?>(e => null).Convert(ArrayUtils.GetEmpty<object>(), typeof(string), null, null));
-            Assert.IsNull(MultiValueConverter.Create<int, string?>(e => null).Convert(null, typeof(string), null, null));
+            Assert.IsNull(MultiValueConverter.Create<int, string?>(e => null).Convert(new object?[] { true, null }, typeof(string), null, null!));
+            Assert.IsNull(MultiValueConverter.Create<int, string?>(e => null).Convert(new object?[] { null, true }, typeof(string), null, null!));
+            Assert.IsNull(MultiValueConverter.Create<int, string?>(e => null).Convert(ArrayUtils.GetEmpty<object>(), typeof(string), null, null!));
+            Assert.IsNull(MultiValueConverter.Create<int, string?>(e => null).Convert(null!, typeof(string), null, null!));
 
-            // with a valid input value
-            Assert.AreEqual("a", MultiValueConverter.Create<int, string>(e => "a").Convert(new object[] { 1, 2 }, typeof(string), null, null));
+            // with a valid input value!
+            Assert.AreEqual("a", MultiValueConverter.Create<int, string>(e => "a").Convert(new object[] { 1, 2 }, typeof(string), null, null!));
             Assert.AreEqual(
                 "3",
                 MultiValueConverter.Create<int, string>(
@@ -136,7 +136,7 @@ namespace Tests.LambdaConverters.Avalonia
 
                             return e.Values.Sum().ToString();
                         })
-                    .Convert(new object[] { 1, 2 }, typeof(string), null, null));
+                    .Convert(new object[] { 1, 2 }, typeof(string), null, null!));
             Assert.AreEqual(
                 "3",
                 MultiValueConverter.Create<int, string>(
@@ -156,35 +156,35 @@ namespace Tests.LambdaConverters.Avalonia
             // with a wrong target type (use default error strategy)
             SequenceAssert.AreEqual(
                 new object[1],
-                MultiValueConverter.Create<string, int>(convertBackFunction: e => null).ConvertBack(1, new[] { typeof(bool) }, null, null));
+                MultiValueConverter.Create<string, int>(convertBackFunction: e => null).ConvertBack(1, new[] { typeof(bool) }, null, null!));
 
             // without a target type
             Assert.IsNull(
-                MultiValueConverter.Create<string?, int>(convertBackFunction: e => null).ConvertBack(1, ArrayUtils.GetEmpty<Type>(), null, null));
+                MultiValueConverter.Create<string?, int>(convertBackFunction: e => null).ConvertBack(1, ArrayUtils.GetEmpty<Type>(), null, null!));
             Assert.IsNull(
-                MultiValueConverter.Create<string?, int>(convertBackFunction: e => null).ConvertBack(1, new[] { typeof(string), null }, null, null));
+                MultiValueConverter.Create<string?, int>(convertBackFunction: e => null).ConvertBack(1, new[] { typeof(string), null! }, null, null!));
             SequenceAssert.AreEqual(
                 new[] { "a", "b" },
-                MultiValueConverter.Create<string, int>(convertBackFunction: e => new[] { "a", "b" }).ConvertBack(1, null, null, null));
+                MultiValueConverter.Create<string, int>(convertBackFunction: e => new[] { "a", "b" }).ConvertBack(1, null!, null, null!));
 
             // with an unexpected parameter (use default error strategy)
             SequenceAssert.AreEqual(
                 new object[1],
-                MultiValueConverter.Create<string?, int>(convertBackFunction: e => null).ConvertBack(1, new[] { typeof(string) }, "p", null));
+                MultiValueConverter.Create<string?, int>(convertBackFunction: e => null).ConvertBack(1, new[] { typeof(string) }, "p", null!));
 
             // with an input value of an unexpected type (use default error strategy)
             SequenceAssert.AreEqual(
                 new object[1],
-                MultiValueConverter.Create<string?, int>(convertBackFunction: e => null).ConvertBack(true, new[] { typeof(string) }, null, null));
+                MultiValueConverter.Create<string?, int>(convertBackFunction: e => null).ConvertBack(true, new[] { typeof(string) }, null, null!));
             SequenceAssert.AreEqual(
                 new object[1],
-                MultiValueConverter.Create<string, int>(convertBackFunction: e => null).ConvertBack(null, new[] { typeof(string) }, null, null));
+                MultiValueConverter.Create<string, int>(convertBackFunction: e => null).ConvertBack(null, new[] { typeof(string) }, null, null!));
 
             // with a valid input value
             SequenceAssert.AreEqual(
                 new[] { "a", "b" },
                 MultiValueConverter.Create<string, int>(convertBackFunction: e => new[] { "a", "b" })
-                    .ConvertBack(1, new[] { typeof(string), typeof(string) }, null, null));
+                    .ConvertBack(1, new[] { typeof(string), typeof(string) }, null, null!));
             SequenceAssert.AreEqual(
                 new[] { "1", "1" },
                 MultiValueConverter.Create<string, int>(
@@ -195,7 +195,7 @@ namespace Tests.LambdaConverters.Avalonia
 
                             return new[] { e.Value.ToString(), e.Value.ToString() };
                         })
-                    .ConvertBack(1, new[] { typeof(string), typeof(string) }, null, null));
+                    .ConvertBack(1, new[] { typeof(string), typeof(string) }, null, null!));
             SequenceAssert.AreEqual(
                 new[] { "1", "1" },
                 MultiValueConverter.Create<string, int>(
@@ -219,113 +219,113 @@ namespace Tests.LambdaConverters.Avalonia
                 "errorStrategy");
 
             // with ConverterErrorStrategy.ReturnDefaultValue (default)
-            Assert.AreEqual(null, MultiValueConverter.Create<int, string, bool>().Convert(null, null, null, null));
-            Assert.AreEqual(null, MultiValueConverter.Create<int, string, bool>().Convert(ArrayUtils.GetEmpty<object>(), null, null, null));
-            Assert.AreEqual(null, MultiValueConverter.Create<int, string, bool>().Convert(new object[] { 1, 2 }, null, null, null));
-            Assert.AreEqual(0, MultiValueConverter.Create<int, int, bool>().Convert(null, null, null, null));
-            Assert.AreEqual(0, MultiValueConverter.Create<int, int, bool>().Convert(ArrayUtils.GetEmpty<object>(), null, null, null));
-            Assert.AreEqual(0, MultiValueConverter.Create<int, int, bool>().Convert(new object[] { 1, 2 }, null, null, null));
-            Assert.AreEqual(false, MultiValueConverter.Create<int, bool, bool>().Convert(null, null, null, null));
-            Assert.AreEqual(false, MultiValueConverter.Create<int, bool, bool>().Convert(ArrayUtils.GetEmpty<object>(), null, null, null));
-            Assert.AreEqual(false, MultiValueConverter.Create<int, bool, bool>().Convert(new object[] { 1, 2 }, null, null, null));
+            Assert.AreEqual(null, MultiValueConverter.Create<int, string, bool>().Convert(null!, null!, null, null!));
+            Assert.AreEqual(null, MultiValueConverter.Create<int, string, bool>().Convert(ArrayUtils.GetEmpty<object>(), null!, null, null!));
+            Assert.AreEqual(null, MultiValueConverter.Create<int, string, bool>().Convert(new object[] { 1, 2 }, null!, null, null!));
+            Assert.AreEqual(0, MultiValueConverter.Create<int, int, bool>().Convert(null!, null!, null, null!));
+            Assert.AreEqual(0, MultiValueConverter.Create<int, int, bool>().Convert(ArrayUtils.GetEmpty<object>(), null!, null, null!));
+            Assert.AreEqual(0, MultiValueConverter.Create<int, int, bool>().Convert(new object[] { 1, 2 }, null!, null, null!));
+            Assert.AreEqual(false, MultiValueConverter.Create<int, bool, bool>().Convert(null!, null!, null, null!));
+            Assert.AreEqual(false, MultiValueConverter.Create<int, bool, bool>().Convert(ArrayUtils.GetEmpty<object>(), null!, null, null!));
+            Assert.AreEqual(false, MultiValueConverter.Create<int, bool, bool>().Convert(new object[] { 1, 2 }, null!, null, null!));
 
-            Assert.IsNull(MultiValueConverter.Create<string, int, bool>().ConvertBack(1, null, null, null));
+            Assert.IsNull(MultiValueConverter.Create<string, int, bool>().ConvertBack(1, null!, null, null!));
             SequenceAssert.AreEqual(
                 ArrayUtils.GetEmpty<object>(),
-                MultiValueConverter.Create<string, int, bool>().ConvertBack(1, ArrayUtils.GetEmpty<Type>(), null, null));
+                MultiValueConverter.Create<string, int, bool>().ConvertBack(1, ArrayUtils.GetEmpty<Type>(), null, null!));
             SequenceAssert.AreEqual(
                 new object[2],
-                MultiValueConverter.Create<string, int, bool>().ConvertBack(1, new[] { typeof(int), typeof(string) }, null, null));
-            Assert.IsNull(MultiValueConverter.Create<int, int, bool>().ConvertBack(1, null, null, null));
+                MultiValueConverter.Create<string, int, bool>().ConvertBack(1, new[] { typeof(int), typeof(string) }, null, null!));
+            Assert.IsNull(MultiValueConverter.Create<int, int, bool>().ConvertBack(1, null!, null, null!));
             SequenceAssert.AreEqual(
                 ArrayUtils.GetEmpty<object>(),
-                MultiValueConverter.Create<int, int, bool>().ConvertBack(1, ArrayUtils.GetEmpty<Type>(), null, null));
+                MultiValueConverter.Create<int, int, bool>().ConvertBack(1, ArrayUtils.GetEmpty<Type>(), null, null!));
             SequenceAssert.AreEqual(
                 new object[] { 0, 0 },
-                MultiValueConverter.Create<int, int, bool>().ConvertBack(1, new[] { typeof(int), typeof(string) }, null, null));
-            Assert.IsNull(MultiValueConverter.Create<bool, int, bool>().ConvertBack(1, null, null, null));
+                MultiValueConverter.Create<int, int, bool>().ConvertBack(1, new[] { typeof(int), typeof(string) }, null, null!));
+            Assert.IsNull(MultiValueConverter.Create<bool, int, bool>().ConvertBack(1, null!, null, null!));
             SequenceAssert.AreEqual(
                 ArrayUtils.GetEmpty<object>(),
-                MultiValueConverter.Create<bool, int, bool>().ConvertBack(1, ArrayUtils.GetEmpty<Type>(), null, null));
+                MultiValueConverter.Create<bool, int, bool>().ConvertBack(1, ArrayUtils.GetEmpty<Type>(), null, null!));
             SequenceAssert.AreEqual(
                 new object[] { false, false },
-                MultiValueConverter.Create<bool, int, bool>().ConvertBack(1, new[] { typeof(int), typeof(string) }, null, null));
+                MultiValueConverter.Create<bool, int, bool>().ConvertBack(1, new[] { typeof(int), typeof(string) }, null, null!));
 
             // with ConverterErrorStrategy.UseFallbackOrDefaultValue
             Assert.AreEqual(
                 AvaloniaProperty.UnsetValue,
                 MultiValueConverter.Create<int, string, bool>(errorStrategy: ConverterErrorStrategy.UseFallbackOrDefaultValue)
-                    .Convert(null, null, null, null));
+                    .Convert(null!, null!, null, null!));
             Assert.AreEqual(
                 AvaloniaProperty.UnsetValue,
                 MultiValueConverter.Create<int, string, bool>(errorStrategy: ConverterErrorStrategy.UseFallbackOrDefaultValue)
-                    .Convert(ArrayUtils.GetEmpty<object>(), null, null, null));
+                    .Convert(ArrayUtils.GetEmpty<object>(), null!, null, null!));
             Assert.AreEqual(
                 AvaloniaProperty.UnsetValue,
                 MultiValueConverter.Create<int, string, bool>(errorStrategy: ConverterErrorStrategy.UseFallbackOrDefaultValue)
-                    .Convert(new object[] { 1, 2 }, null, null, null));
+                    .Convert(new object[] { 1, 2 }, null!, null, null!));
 
             Assert.IsNull(
                 MultiValueConverter.Create<string, int, bool>(errorStrategy: ConverterErrorStrategy.UseFallbackOrDefaultValue)
-                    .ConvertBack(1, null, null, null));
+                    .ConvertBack(1, null!, null, null!));
             SequenceAssert.AreEqual(
                 ArrayUtils.GetEmpty<object>(),
                 MultiValueConverter.Create<string, int, bool>(errorStrategy: ConverterErrorStrategy.UseFallbackOrDefaultValue)
-                    .ConvertBack(1, ArrayUtils.GetEmpty<Type>(), null, null));
+                    .ConvertBack(1, ArrayUtils.GetEmpty<Type>(), null, null!));
             SequenceAssert.AreEqual(
                 new[] { AvaloniaProperty.UnsetValue, AvaloniaProperty.UnsetValue },
                 MultiValueConverter.Create<string, int, bool>(errorStrategy: ConverterErrorStrategy.UseFallbackOrDefaultValue)
-                    .ConvertBack(1, new[] { typeof(int), typeof(string) }, null, null));
+                    .ConvertBack(1, new[] { typeof(int), typeof(string) }, null, null!));
 
             // with ConverterErrorStrategy.DoNothing
             Assert.AreEqual(
                 BindingOperations.DoNothing,
-                MultiValueConverter.Create<int, string, bool>(errorStrategy: ConverterErrorStrategy.DoNothing).Convert(null, null, null, null));
+                MultiValueConverter.Create<int, string, bool>(errorStrategy: ConverterErrorStrategy.DoNothing).Convert(null!, null!, null, null!));
             Assert.AreEqual(
                 BindingOperations.DoNothing,
                 MultiValueConverter.Create<int, string, bool>(errorStrategy: ConverterErrorStrategy.DoNothing)
-                    .Convert(ArrayUtils.GetEmpty<object>(), null, null, null));
+                    .Convert(ArrayUtils.GetEmpty<object>(), null!, null, null!));
             Assert.AreEqual(
                 BindingOperations.DoNothing,
                 MultiValueConverter.Create<int, string, bool>(errorStrategy: ConverterErrorStrategy.DoNothing)
-                    .Convert(new object[] { 1, 2 }, null, null, null));
+                    .Convert(new object[] { 1, 2 }, null!, null, null!));
 
             Assert.IsNull(
-                MultiValueConverter.Create<string, int, bool>(errorStrategy: ConverterErrorStrategy.DoNothing).ConvertBack(1, null, null, null));
+                MultiValueConverter.Create<string, int, bool>(errorStrategy: ConverterErrorStrategy.DoNothing).ConvertBack(1, null!, null, null!));
             SequenceAssert.AreEqual(
                 ArrayUtils.GetEmpty<object>(),
                 MultiValueConverter.Create<string, int, bool>(errorStrategy: ConverterErrorStrategy.DoNothing)
-                    .ConvertBack(1, ArrayUtils.GetEmpty<Type>(), null, null));
+                    .ConvertBack(1, ArrayUtils.GetEmpty<Type>(), null, null!));
             SequenceAssert.AreEqual(
                 new[] { BindingOperations.DoNothing, BindingOperations.DoNothing },
                 MultiValueConverter.Create<string, int, bool>(errorStrategy: ConverterErrorStrategy.DoNothing)
-                    .ConvertBack(1, new[] { typeof(int), typeof(string) }, null, null));
+                    .ConvertBack(1, new[] { typeof(int), typeof(string) }, null, null!));
         }
 
         [TestMethod]
         public void WithConvertFunction_UsingConverterParameter()
         {
             // with a wrong target type (use default error strategy)
-            Assert.IsNull(MultiValueConverter.Create<int, string?, bool>(e => null).Convert(new object[] { 1, 2 }, typeof(bool), true, null));
+            Assert.IsNull(MultiValueConverter.Create<int, string?, bool>(e => null).Convert(new object[] { 1, 2 }, typeof(bool), true, null!));
 
             // without a target type
-            Assert.AreEqual("a", MultiValueConverter.Create<int, string, bool>(e => "a").Convert(new object[] { 1, 2 }, null, true, null));
+            Assert.AreEqual("a", MultiValueConverter.Create<int, string, bool>(e => "a").Convert(new object[] { 1, 2 }, null!, true, null!));
 
             // with an unexpected parameter (use default error strategy)
-            Assert.IsNull(MultiValueConverter.Create<int, string?, bool>(e => null).Convert(new object[] { 1, 2 }, typeof(string), "p", null));
-            Assert.IsNull(MultiValueConverter.Create<int, string?, bool>(e => null).Convert(new object[] { 1, 2 }, typeof(string), null, null));
+            Assert.IsNull(MultiValueConverter.Create<int, string?, bool>(e => null).Convert(new object[] { 1, 2 }, typeof(string), "p", null!));
+            Assert.IsNull(MultiValueConverter.Create<int, string?, bool>(e => null).Convert(new object[] { 1, 2 }, typeof(string), null, null!));
 
             // with an input value of an unexpected type (use default error strategy)
             Assert.IsNull(
-                MultiValueConverter.Create<int, string?, bool>(e => null).Convert(new object?[] { true, null }, typeof(string), true, null));
+                MultiValueConverter.Create<int, string?, bool>(e => null).Convert(new object?[] { true, null }, typeof(string), true, null!));
             Assert.IsNull(
-                MultiValueConverter.Create<int, string?, bool>(e => null).Convert(new object?[] { null, true }, typeof(string), true, null));
+                MultiValueConverter.Create<int, string?, bool>(e => null).Convert(new object?[] { null, true }, typeof(string), true, null!));
             Assert.IsNull(
-                MultiValueConverter.Create<int, string?, bool>(e => null).Convert(ArrayUtils.GetEmpty<object>(), typeof(string), true, null));
-            Assert.IsNull(MultiValueConverter.Create<int, string?, bool>(e => null).Convert(null, typeof(string), true, null));
+                MultiValueConverter.Create<int, string?, bool>(e => null).Convert(ArrayUtils.GetEmpty<object>(), typeof(string), true, null!));
+            Assert.IsNull(MultiValueConverter.Create<int, string?, bool>(e => null).Convert(null!, typeof(string), true, null!));
 
             // with a valid input value
-            Assert.AreEqual("a", MultiValueConverter.Create<int, string, bool>(e => "a").Convert(new object[] { 1, 2 }, typeof(string), true, null));
+            Assert.AreEqual("a", MultiValueConverter.Create<int, string, bool>(e => "a").Convert(new object[] { 1, 2 }, typeof(string), true, null!));
             Assert.AreEqual(
                 "3",
                 MultiValueConverter.Create<int, string, bool>(
@@ -337,7 +337,7 @@ namespace Tests.LambdaConverters.Avalonia
 
                             return e.Values.Sum().ToString();
                         })
-                    .Convert(new object[] { 1, 2 }, typeof(string), true, null));
+                    .Convert(new object[] { 1, 2 }, typeof(string), true, null!));
             Assert.AreEqual(
                 "3",
                 MultiValueConverter.Create<int, string, bool>(
@@ -358,42 +358,42 @@ namespace Tests.LambdaConverters.Avalonia
             // with a wrong target type (use default error strategy)
             SequenceAssert.AreEqual(
                 new object[1],
-                MultiValueConverter.Create<string, int, bool>(convertBackFunction: e => null).ConvertBack(1, new[] { typeof(bool) }, true, null));
+                MultiValueConverter.Create<string, int, bool>(convertBackFunction: e => null).ConvertBack(1, new[] { typeof(bool) }, true, null!));
 
             // without a target type
             Assert.IsNull(
                 MultiValueConverter.Create<string, int, bool>(convertBackFunction: e => null)
-                    .ConvertBack(1, ArrayUtils.GetEmpty<Type>(), true, null));
+                    .ConvertBack(1, ArrayUtils.GetEmpty<Type>(), true, null!));
             Assert.IsNull(
                 MultiValueConverter.Create<string, int, bool>(convertBackFunction: e => null)
-                    .ConvertBack(1, new[] { typeof(string), null }, true, null));
+                    .ConvertBack(1, new[] { typeof(string), null! }, true, null!));
             SequenceAssert.AreEqual(
                 new[] { "a", "b" },
-                MultiValueConverter.Create<string, int, bool>(convertBackFunction: e => new[] { "a", "b" }).ConvertBack(1, null, true, null));
+                MultiValueConverter.Create<string, int, bool>(convertBackFunction: e => new[] { "a", "b" }).ConvertBack(1, null!, true, null!));
 
             // with an unexpected parameter (use default error strategy)
             SequenceAssert.AreEqual(
                 new object[1],
-                MultiValueConverter.Create<string, int, bool>(convertBackFunction: e => null).ConvertBack(1, new[] { typeof(string) }, "p", null));
+                MultiValueConverter.Create<string, int, bool>(convertBackFunction: e => null).ConvertBack(1, new[] { typeof(string) }, "p", null!));
             SequenceAssert.AreEqual(
                 new object[1],
-                MultiValueConverter.Create<string, int, bool>(convertBackFunction: e => null).ConvertBack(1, new[] { typeof(string) }, null, null));
+                MultiValueConverter.Create<string, int, bool>(convertBackFunction: e => null).ConvertBack(1, new[] { typeof(string) }, null, null!));
 
             // with an input value of an unexpected type (use default error strategy)
             SequenceAssert.AreEqual(
                 new object[1],
                 MultiValueConverter.Create<string, int, bool>(convertBackFunction: e => null)
-                    .ConvertBack(true, new[] { typeof(string) }, true, null));
+                    .ConvertBack(true, new[] { typeof(string) }, true, null!));
             SequenceAssert.AreEqual(
                 new object[1],
                 MultiValueConverter.Create<string, int, bool>(convertBackFunction: e => null)
-                    .ConvertBack(null, new[] { typeof(string) }, true, null));
+                    .ConvertBack(null, new[] { typeof(string) }, true, null!));
 
             // with a valid input value
             SequenceAssert.AreEqual(
                 new[] { "a", "b" },
                 MultiValueConverter.Create<string, int, bool>(convertBackFunction: e => new[] { "a", "b" })
-                    .ConvertBack(1, new[] { typeof(string), typeof(string) }, true, null));
+                    .ConvertBack(1, new[] { typeof(string), typeof(string) }, true, null!));
             SequenceAssert.AreEqual(
                 new[] { "1", "1" },
                 MultiValueConverter.Create<string, int, bool>(
@@ -405,7 +405,7 @@ namespace Tests.LambdaConverters.Avalonia
 
                             return new[] { e.Value.ToString(), e.Value.ToString() };
                         })
-                    .ConvertBack(1, new[] { typeof(string), typeof(string) }, true, null));
+                    .ConvertBack(1, new[] { typeof(string), typeof(string) }, true, null!));
             SequenceAssert.AreEqual(
                 new[] { "1", "1" },
                 MultiValueConverter.Create<string, int, bool>(

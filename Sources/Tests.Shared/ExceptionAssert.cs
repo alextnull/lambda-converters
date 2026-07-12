@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Diagnostics;
 using System.Diagnostics.CodeAnalysis;
-using JetBrains.Annotations;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace Tests.Shared
@@ -39,7 +38,7 @@ namespace Tests.Shared
             return exception;
         }
 
-        public static E Throws<E>([InstantHandle] Action action, string? expectedParamName = null) where E : Exception
+        public static E Throws<E>(Action action, string? expectedParamName = null) where E : Exception
         {
             try
             {

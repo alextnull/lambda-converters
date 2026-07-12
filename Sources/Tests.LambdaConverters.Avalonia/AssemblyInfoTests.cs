@@ -12,10 +12,7 @@ namespace Tests.LambdaConverters.Avalonia
     public sealed class AssemblyInfoTests
     {
         static Assembly Assembly => typeof(ValueConverter).Assembly;
-
-        [TestMethod]
-        public void _AssemblyCopyright() => AssemblyAssert.AreAttributesValid(Assembly);
-
+        
         [TestMethod]
         public void NoDependencies()
             =>

@@ -6,7 +6,6 @@ using System.Diagnostics.CodeAnalysis;
 using System.Globalization;
 using System.Linq;
 using Avalonia.Data.Converters;
-using JetBrains.Annotations;
 
 namespace LambdaConverters
 {
@@ -37,8 +36,6 @@ namespace LambdaConverters
 #if NETCOREAPP
             [return: NotNullIfNotNull("targetTypes")]
 #endif
-            [Pure]
-            [ContractAnnotation("targetTypes: null => null; targetTypes: notnull => notnull", true)]
             internal object?[]? GetErrorValues(object? defaultValue, Type?[]? targetTypes)
             {
                 if (targetTypes != null)
@@ -99,7 +96,7 @@ namespace LambdaConverters
                 {
                     EventSource.Log.MissingConvertBackFunction("convertBackFunction", ErrorStrategy.ToString());
 
-                    return GetErrorValues(DefaultInputTypeValue, targetTypes?.ToArray());
+                    return GetErrorValues(DefaultInputTypeValue, targetTypes?.ToArray())!;
                 }
 
                 if (targetTypes != null)
@@ -117,7 +114,7 @@ namespace LambdaConverters
                                     InputType.Name,
                                     ErrorStrategy.ToString());
 
-                                return GetErrorValues(DefaultInputTypeValue, targetTypes?.ToArray());
+                                return GetErrorValues(DefaultInputTypeValue, targetTypes?.ToArray())!;
                             }
                         }
                         else
@@ -131,7 +128,7 @@ namespace LambdaConverters
                     EventSource.Log.NonRequestedTargetType();
                 }
 
-                return ConvertBackInternal(value, targetTypes?.ToArray(), parameter, culture);
+                return ConvertBackInternal(value, targetTypes?.ToArray(), parameter, culture)!;
             }
         }
 
@@ -316,7 +313,6 @@ namespace LambdaConverters
         /// <exception cref="ArgumentOutOfRangeException">
         ///     <paramref name="errorStrategy"/> is not a valid <see cref="ConverterErrorStrategy"/> value.
         /// </exception>
-        [Pure]
         public static IMultiValueConverter Create<I, O>(
             Func<MultiValueConverterArgs<I>, O>? convertFunction = null,
             Func<ValueConverterArgs<O>, IEnumerable<I>?>? convertBackFunction = null,
@@ -349,7 +345,6 @@ namespace LambdaConverters
         /// <exception cref="ArgumentOutOfRangeException">
         ///     <paramref name="errorStrategy"/> is not a valid <see cref="ConverterErrorStrategy"/> value.
         /// </exception>
-        [Pure]
         public static IMultiValueConverter Create<I, O, P>(
             Func<MultiValueConverterArgs<I, P>, O>? convertFunction = null,
             Func<ValueConverterArgs<O, P>, IEnumerable<I>?>? convertBackFunction = null,
